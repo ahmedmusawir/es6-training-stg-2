@@ -12,7 +12,7 @@ class Admin extends Page {
       this.pageContent = document.querySelector('.admin-page .page-content');
       console.log(this.pageContent);
       // Adding the UI Elements like Image, Text etc.
-      this.addUIElements();
+      // this.addUIElements();
     });
   }
 
