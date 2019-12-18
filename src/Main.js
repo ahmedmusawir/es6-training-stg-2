@@ -26,14 +26,11 @@ class Main {
     const navbar = new Header();
     navbar.createElement('SECTION', 'navigation');
     navbar.appendToElement(this.body);
-    // console.log(navbar);
     const navLinks = document.querySelectorAll('.nav-link');
-    // console.log(navLinks);
     // Adding EventListeners to NavLinks
     navLinks.forEach((navLink) => {
       navLink.addEventListener('click', (e) => {
         this.addPages(e.target.innerHTML);
-        // console.log(e.target.innerHTML);
       });
     });
     // ADDING FOOTER
@@ -43,7 +40,6 @@ class Main {
   };
 
   addPages = (page) => {
-    // console.log(page);
     switch (page) {
       case 'Home':
         this.app.innerHTML = '';
@@ -54,7 +50,7 @@ class Main {
         const homePageContent = document.querySelector(
           '.home-page .page-content'
         );
-        // homePageContent.innerHTML = '';
+
         home.addUIElements(homePageContent);
         break;
       case 'Admin':
@@ -66,7 +62,7 @@ class Main {
         const adminPageContent = document.querySelector(
           '.admin-page .page-content'
         );
-        // adminPageContent.innerHTML = '';
+
         admin.addUIElements(adminPageContent);
         break;
     }

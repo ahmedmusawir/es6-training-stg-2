@@ -7,12 +7,11 @@ class Home extends Page {
     super();
 
     document.addEventListener('DOMContentLoaded', () => {
-      // alert('DOM ready!');
       // Loading up the Page Content Target
       this.pageContent = document.querySelector('.home-page .page-content');
       // console.log(this.pageContent);
       // Adding the UI Elements like Image, Text etc.
-      this.addUIElements();
+      // this.addUIElements();
     });
   }
 
