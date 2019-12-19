@@ -6,7 +6,6 @@ import Admin from '../pages/Admin';
 class AppBase {
   constructor() {
     this.init();
-    // this.show();
   }
 
   init() {
@@ -14,7 +13,10 @@ class AppBase {
   }
 
   show = () => {
+    // ADDING LAYOUT ELEMENTS TO APP
     this.addLayoutElements();
+    // ADDING HOME PAGE
+    this.addPages('Home');
   };
 
   addLayoutElements = () => {
@@ -33,6 +35,35 @@ class AppBase {
     const footer = new Footer();
     footer.createElement('SECTION', 'footer');
     footer.appendToElement(this.body);
+  };
+
+  addPages = (page) => {
+    switch (page) {
+      case 'Home':
+        this.app.innerHTML = '';
+        const home = new Home();
+        home.createElement('DIV', 'home-page');
+        home.appendToElement(this.app);
+
+        const homePageContent = document.querySelector(
+          '.home-page .page-content'
+        );
+
+        home.addUIElements(homePageContent);
+        break;
+      case 'Admin':
+        this.app.innerHTML = '';
+        const admin = new Admin();
+        admin.createElement('DIV', 'admin-page');
+        admin.appendToElement(this.app);
+
+        const adminPageContent = document.querySelector(
+          '.admin-page .page-content'
+        );
+
+        admin.addUIElements(adminPageContent);
+        break;
+    }
   };
 }
 
