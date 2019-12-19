@@ -5,39 +5,41 @@ import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import Home from './components/pages/Home';
 import Admin from './components/pages/Admin';
+import AppBase from './components/framework/AppBase';
 
-class Main {
+class Main extends AppBase {
   constructor() {
-    this.init();
+    super();
     this.body = document.querySelector('body');
     this.app = document.getElementById('app');
+    this.show();
     // ADDING LAYOUT ELEMENTS TO APP
-    this.addLayoutElements();
+    // this.addLayoutElements();
     // ADDING HOME PAGE
-    this.addPages('Home');
+    // this.addPages('Home');
   }
 
   init() {
     console.log('Main Initialized!');
   }
 
-  addLayoutElements = () => {
-    // ADDING HEADER
-    const navbar = new Header();
-    navbar.createElement('SECTION', 'navigation');
-    navbar.appendToElement(this.body);
-    const navLinks = document.querySelectorAll('.nav-link');
-    // Adding EventListeners to NavLinks
-    navLinks.forEach((navLink) => {
-      navLink.addEventListener('click', (e) => {
-        this.addPages(e.target.innerHTML);
-      });
-    });
-    // ADDING FOOTER
-    const footer = new Footer();
-    footer.createElement('SECTION', 'footer');
-    footer.appendToElement(this.body);
-  };
+  // addLayoutElements = () => {
+  //   // ADDING HEADER
+  //   const navbar = new Header();
+  //   navbar.createElement('SECTION', 'navigation');
+  //   navbar.appendToElement(this.body);
+  //   const navLinks = document.querySelectorAll('.nav-link');
+  //   // Adding EventListeners to NavLinks
+  //   navLinks.forEach((navLink) => {
+  //     navLink.addEventListener('click', (e) => {
+  //       this.addPages(e.target.innerHTML);
+  //     });
+  //   });
+  //   // ADDING FOOTER
+  //   const footer = new Footer();
+  //   footer.createElement('SECTION', 'footer');
+  //   footer.appendToElement(this.body);
+  // };
 
   addPages = (page) => {
     switch (page) {
