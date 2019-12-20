@@ -20,13 +20,15 @@ class Header extends UIBase {
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="nav nav-pills">
           <li class="nav-item">
-            <a class="nav-link active mr-1" href="#">Home</a>
+            <a class="nav-link active mr-1" href="#"> Home </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active mr-1" href="#">Admin</a>
+            <a class="nav-link active mr-1" href="#">
+              Admin
+            </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="#">Login</a>
+            <a class="nav-link active" href="#">Register</a>
           </li>
         </ul>
       </div>

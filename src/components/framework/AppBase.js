@@ -1,22 +1,41 @@
 import Header from '../layout/Header';
 import Footer from '../layout/Footer';
-import Home from '../pages/Home';
-import Admin from '../pages/Admin';
 
 class AppBase {
   constructor() {
     this.init();
+    this.routeMap = {};
+    this.defaultRoute = null;
   }
 
   init() {
-    console.log('App Base Initialized!');
+    // console.log('App Base Initialized!');
   }
+
+  addRoute = (pageName, pageObj, defaultRoute = false) => {
+    this.routeMap[pageName] = pageObj;
+
+    if (defaultRoute) {
+      this.defaultRoute = pageName;
+    }
+  };
+
+  activateRoute = (pageName) => {
+    this.app.innerHTML = '';
+    const page = this.routeMap[pageName];
+    page.createElement('DIV', pageName);
+    page.appendToElement(this.app);
+
+    const pageContent = document.querySelector(`.${pageName} .page-content`);
+
+    page.addUIElements(pageContent);
+  };
 
   show = () => {
     // ADDING LAYOUT ELEMENTS TO APP
     this.addLayoutElements();
     // ADDING HOME PAGE
-    this.addPages('Home');
+    this.activateRoute('Home');
   };
 
   addLayoutElements = () => {
@@ -28,42 +47,16 @@ class AppBase {
     // Adding EventListeners to NavLinks
     navLinks.forEach((navLink) => {
       navLink.addEventListener('click', (e) => {
-        this.addPages(e.target.innerHTML);
+        const route = e.target.innerText;
+        // let route = e.target.innerHTML;
+        this.activateRoute(route);
+        // this.activateRoute(route.trim());
       });
     });
     // ADDING FOOTER
     const footer = new Footer();
     footer.createElement('SECTION', 'footer');
     footer.appendToElement(this.body);
-  };
-
-  addPages = (page) => {
-    switch (page) {
-      case 'Home':
-        this.app.innerHTML = '';
-        const home = new Home();
-        home.createElement('DIV', 'home-page');
-        home.appendToElement(this.app);
-
-        const homePageContent = document.querySelector(
-          '.home-page .page-content'
-        );
-
-        home.addUIElements(homePageContent);
-        break;
-      case 'Admin':
-        this.app.innerHTML = '';
-        const admin = new Admin();
-        admin.createElement('DIV', 'admin-page');
-        admin.appendToElement(this.app);
-
-        const adminPageContent = document.querySelector(
-          '.admin-page .page-content'
-        );
-
-        admin.addUIElements(adminPageContent);
-        break;
-    }
   };
 }
 

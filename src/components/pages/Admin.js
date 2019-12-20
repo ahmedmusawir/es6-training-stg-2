@@ -7,7 +7,6 @@ class Admin extends Page {
     super();
 
     document.addEventListener('DOMContentLoaded', () => {
-      alert('DOM ready!');
       // Loading up the Page Content Target
       this.pageContent = document.querySelector('.admin-page .page-content');
       console.log(this.pageContent);
