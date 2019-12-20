@@ -18,8 +18,18 @@ class Header extends UIBase {
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul id="nav-items" class="nav nav-pills">
-         <!-- DYNAMIC NAV ITEM CONTENT -->
+        <ul class="nav nav-pills">
+          <li class="nav-item">
+            <a class="nav-link active mr-1" href="#"> Home </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active mr-1" href="#">
+              Admin
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Register</a>
+          </li>
         </ul>
       </div>
     </nav>

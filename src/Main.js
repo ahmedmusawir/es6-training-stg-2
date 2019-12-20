@@ -26,4 +26,6 @@ class Main extends AppBase {
 
 const main = new Main();
 // Making the App visible
-main.show();
+document.addEventListener('DOMContentLoaded', () => {
+  main.show();
+});

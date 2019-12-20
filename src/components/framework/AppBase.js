@@ -6,7 +6,6 @@ class AppBase {
     this.init();
     this.routeMap = {};
     this.defaultRoute = null;
-    // this.navbar = null;
   }
 
   init() {
@@ -47,9 +46,30 @@ class AppBase {
     this.navbar = new Header();
     this.navbar.createElement('SECTION', 'navigation');
     this.navbar.appendToElement(this.body);
+
+    // console.log(this.routeMap);
+    const navItems = document.getElementById('nav-items');
+    // console.log(navItems);
+
+    for (let key in this.routeMap) {
+      // let value = this.routeMap[key];
+      navItems.innerHTML += `
+      <li class="nav-item">
+        <a class="nav-link active mr-1" href="#"> ${key} </a>
+      </li>`;
+    }
+
+    // let items = Object.keys(this.routeMap);
+
+    // items.map((key) => {
+    //   let value = this.routeMap[key];
+    //   console.log(key, value);
+    // });
+
     const navLinks = document.querySelectorAll('.nav-link');
     // Adding EventListeners to NavLinks
     navLinks.forEach((navLink) => {
+      // console.log(navLink);
       navLink.addEventListener('click', (e) => {
         const route = e.target.innerText;
         // let route = e.target.innerHTML;
