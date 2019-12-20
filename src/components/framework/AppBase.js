@@ -6,6 +6,7 @@ class AppBase {
     this.init();
     this.routeMap = {};
     this.defaultRoute = null;
+    // this.navbar = null;
   }
 
   init() {
@@ -13,6 +14,7 @@ class AppBase {
   }
 
   addRoute = (pageName, pageObj, defaultRoute = false) => {
+    // this.navbar.addLink(pageName);
     this.routeMap[pageName] = pageObj;
 
     if (defaultRoute) {
@@ -35,14 +37,16 @@ class AppBase {
     // ADDING LAYOUT ELEMENTS TO APP
     this.addLayoutElements();
     // ADDING HOME PAGE
-    this.activateRoute('Home');
+    if (this.defaultRoute) {
+      this.activateRoute(this.defaultRoute);
+    }
   };
 
   addLayoutElements = () => {
     // ADDING HEADER
-    const navbar = new Header();
-    navbar.createElement('SECTION', 'navigation');
-    navbar.appendToElement(this.body);
+    this.navbar = new Header();
+    this.navbar.createElement('SECTION', 'navigation');
+    this.navbar.appendToElement(this.body);
     const navLinks = document.querySelectorAll('.nav-link');
     // Adding EventListeners to NavLinks
     navLinks.forEach((navLink) => {

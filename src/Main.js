@@ -12,11 +12,11 @@ class Main extends AppBase {
     this.body = document.querySelector('body');
     this.app = document.getElementById('app');
     // Adding routes for pages
+    // document.addEventListener('DOMContentLoaded', () => {
     this.addRoute('Home', new Home(), true);
     this.addRoute('Admin', new Admin(), false);
     this.addRoute('Register', new Register(), false);
-    // Making the App visible
-    this.show();
+    // });
   }
 
   init() {
@@ -25,3 +25,5 @@ class Main extends AppBase {
 }
 
 const main = new Main();
+// Making the App visible
+main.show();
